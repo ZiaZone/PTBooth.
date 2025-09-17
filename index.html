@@ -32,21 +32,21 @@
 
         .container {
             width: 95vw;
-            max-width: 600px; /* تم زيادة الحد الأقصى للعرض */
+            max-width: 600px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 25px;
-            padding: 40px; /* تم زيادة حجم الهوامش الداخلية */
+            padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 25px; /* تم زيادة المسافات بين العناصر */
+            gap: 25px;
             overflow: hidden;
             border: 2px solid var(--primary-color);
         }
 
         h1 {
-            font-size: 2.5rem; /* تم تكبير حجم الخط */
+            font-size: 2.5rem;
             color: var(--primary-color);
             font-weight: 700;
             margin: 0;
@@ -56,15 +56,15 @@
         .info-card {
             background: var(--background-light);
             border-radius: 20px;
-            padding: 30px; /* تم زيادة الهوامش الداخلية للبطاقة */
+            padding: 30px;
             text-align: right;
-            font-size: 1.2rem; /* تم تكبير حجم الخط */
+            font-size: 1.2rem;
             line-height: 1.7;
             box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .info-card h2 {
-            font-size: 1.8rem; /* تم تكبير حجم الخط */
+            font-size: 1.8rem;
             color: var(--secondary-color);
             margin-bottom: 15px;
             font-weight: 700;
@@ -76,46 +76,25 @@
         }
 
         .visitor-count {
-            font-size: 1.5rem; /* تم تكبير حجم الخط */
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent-color);
             margin: 0;
             background: var(--primary-color);
             color: var(--text-light);
-            padding: 15px; /* تم زيادة الهوامش الداخلية */
+            padding: 15px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             display: inline-block;
         }
 
         .visitor-count span {
-            font-size: 2rem; /* تم تكبير حجم الخط */
+            font-size: 2rem;
             margin-right: 8px;
-        }
-
-        .admin-panel button {
-            width: 100%;
-            padding: 16px; /* تم تكبير حجم الزر */
-            font-size: 1.1rem; /* تم تكبير حجم الخط */
-            background: var(--secondary-color);
-            color: var(--text-light);
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .admin-panel button:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
         
         .thankyou {
-            font-size: 1rem; /* تم تكبير حجم الخط */
+            font-size: 1rem;
             color: #757575;
             margin-top: 15px;
             font-style: italic;
@@ -139,10 +118,6 @@
             عدد الزوار حتى الآن: <span id="visitor-counter">0</span>
         </div>
 
-        <div class="admin-panel">
-            <button id="reset-button">إعادة ضبط العداد</button>
-        </div>
-
         <div class="thankyou">
             <p>نشكركم على زيارتكم لنا ونتمنى لكم دوام الصحة والعافية.</p>
         </div>
@@ -163,18 +138,6 @@
         }
 
         updateCounter();
-
-        document.getElementById('reset-button').addEventListener('click', () => {
-            const code = prompt("أدخل رمز المدير لإعادة ضبط العداد:");
-            if(code === "123") {
-                visits = 0;
-                localStorage.setItem('visits', visits);
-                updateCounter();
-                alert("تم إعادة ضبط العداد بنجاح ✅");
-            } else {
-                alert("الرمز خاطئ. يرجى المحاولة مرة أخرى!");
-            }
-        });
     </script>
 </body>
 </html>
