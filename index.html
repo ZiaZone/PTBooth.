@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Booth</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to bottom, #f5f0e1, #d0f0f5);
+        direction: rtl;
+    }
+
+    .container {
+        width: 60vw;
+        height: 90vh;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 50px 40px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+
+    h1 {
+        font-family: 'Segoe UI', sans-serif;
+        color: #00796b;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: #333333;
+        line-height: 2;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    .info-card {
+        background: #f0f9f9;
+        border-radius: 20px;
+        padding: 35px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: justify;
+    }
+
+    .info-card h2 {
+        font-size: 1.7rem;
+        color: #00796b;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .visitor-count {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #ff7043;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .admin-panel button {
+        width: 100%;
+        padding: 18px;
+        font-size: 1.4rem;
+        background: #00796b;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+
+    .admin-panel button:hover {
+        background: #009688;
+        transform: scale(1.03);
+    }
+
+    @media (max-width: 700px) {
+        .container {
+            width: 90vw;
+            height: 90vh;
+            padding: 30px 20px;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 40px; }
+        p { font-size: 1.2rem; margin-bottom: 20px; }
+        .info-card h2 { font-size: 1.5rem; margin-bottom: 20px; }
+        .visitor-count { font-size: 1.4rem; margin-bottom: 25px; }
+        .admin-panel button { font-size: 1.2rem; padding: 16px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to the PT Booth</h1>
+
+    <p>أهلاً وسهلاً بكم في بوث الشيخوخة والعلاج الطبيعي. في هذا البوث ستجدون توزيعات ونصائح عملية للحفاظ على الحركة والصحة اليومية لكبار السن. هدفنا تمكين الزوار من التعرف على تمارين بسيطة، أساليب الوقاية من الإصابات، وإرشادات للحياة اليومية تساعد كبار السن على الحفاظ على نشاطهم واستقلاليتهم.</p>
+
+    <div class="info-card">
+        <h2>معلومات عن البوث</h2>
+        <p>الشيخوخة مرحلة طبيعية في الحياة، وغالباً ما تصاحبها تغيّرات جسدية تؤثر على الحركة والقدرة البدنية.</p>
+        <p>في البوث نقدم:</p>
+        <p>- توزيعات تحتوي على نصائح يومية للحركة الآمنة والوقاية من الإصابات.</p>
+        <p>- إرشادات وتمارين بسيطة يمكن تطبيقها في المنزل للحفاظ على القوة والمرونة.</p>
+        <p>- فرصة للتحدث مع فريق مختص للحصول على نصائح شخصية حول العلاج الطبيعي.</p>
+        <p>- معلومات حول التعامل مع الألم المزمن، ضعف التوازن، والمشاكل الحركية بشكل آمن.</p>
+        <p>يمكن للزوار تجربة التمارين العملية، الاطلاع على التوزيعات، وطرح أي استفسار على فريق البوث لضمان الاستفادة الكاملة من المعلومات والنصائح المقدمة.</p>
+    </div>
+
+    <p class="visitor-count">
+        عدد الزوار حتى الآن: <span id="visitor-counter">0</span>
+    </p>
+
+    <div class="admin-panel">
+        <button id="reset-button">إعادة ضبط العداد</button>
+    </div>
+
+    <p style="margin-top:30px; font-size:1.2rem; color:#555; text-align:center;">Thank you for visiting our booth!</p>
+</div>
+
+<script>
+    let visits = parseInt(localStorage.getItem('visits')) || 0;
+    const counter = document.getElementById('visitor-counter');
+
+    // التحقق إذا زار المستخدم الصفحة من قبل
+    if (!localStorage.getItem('visited')) {
+        visits++;
+        localStorage.setItem('visits', visits);
+        localStorage.setItem('visited', 'true'); // تسجيل أنه تم احتساب الزيارة
+    }
+
+    counter.textContent = visits;
+
+    document.getElementById('reset-button').addEventListener('click', () => {
+        const code = prompt("Enter admin code to reset:");
+        if(code === "123") {
+            visits = 0;
+            localStorage.setItem('visits', visits);
+            counter.textContent = visits;
+            localStorage.removeItem('visited'); // السماح للزائر بإعادة العد
+            alert("Counter has been reset ✅");
+        } else {
+            alert("Incorrect code!");
+        }
+    });
+</script>
+</body>
+</html>
