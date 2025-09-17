@@ -1,163 +1,180 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PT Booth</title>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: linear-gradient(to bottom, #f5f0e1, #d0f0f5);
-        direction: rtl;
-    }
-
-    .container {
-        width: 60vw;
-        height: 90vh;
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 50px 40px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-        text-align: right;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        overflow-y: auto;
-    }
-
-    h1 {
-        font-family: 'Segoe UI', sans-serif;
-        color: #00796b;
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 50px;
-        line-height: 1.4;
-        text-align: center;
-    }
-
-    p {
-        font-size: 1.4rem;
-        color: #333333;
-        line-height: 2;
-        margin-bottom: 25px;
-        text-align: justify;
-    }
-
-    .info-card {
-        background: #f0f9f9;
-        border-radius: 20px;
-        padding: 35px;
-        margin-bottom: 30px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        text-align: justify;
-    }
-
-    .info-card h2 {
-        font-size: 1.7rem;
-        color: #00796b;
-        margin-bottom: 25px;
-        font-weight: 700;
-    }
-
-    .visitor-count {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: #ff7043;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-
-    .admin-panel button {
-        width: 100%;
-        padding: 18px;
-        font-size: 1.4rem;
-        background: #00796b;
-        color: white;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
-    }
-
-    .admin-panel button:hover {
-        background: #009688;
-        transform: scale(1.03);
-    }
-
-    @media (max-width: 700px) {
-        .container {
-            width: 90vw;
-            height: 90vh;
-            padding: 30px 20px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Booth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #004d40;
+            --secondary-color: #00796b;
+            --accent-color: #ffb300;
+            --background-light: #e0f2f1;
+            --background-dark: #b2dfdb;
+            --text-dark: #212121;
+            --text-light: #ffffff;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 40px; }
-        p { font-size: 1.2rem; margin-bottom: 20px; }
-        .info-card h2 { font-size: 1.5rem; margin-bottom: 20px; }
-        .visitor-count { font-size: 1.4rem; margin-bottom: 25px; }
-        .admin-panel button { font-size: 1.2rem; padding: 16px; }
-    }
-</style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background-light), var(--background-dark));
+            direction: rtl;
+        }
+
+        .container {
+            width: 95vw;
+            max-width: 600px; /* تم زيادة الحد الأقصى للعرض */
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px; /* تم زيادة حجم الهوامش الداخلية */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* تم زيادة المسافات بين العناصر */
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+        }
+
+        h1 {
+            font-size: 2.5rem; /* تم تكبير حجم الخط */
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card {
+            background: var(--background-light);
+            border-radius: 20px;
+            padding: 30px; /* تم زيادة الهوامش الداخلية للبطاقة */
+            text-align: right;
+            font-size: 1.2rem; /* تم تكبير حجم الخط */
+            line-height: 1.7;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h2 {
+            font-size: 1.8rem; /* تم تكبير حجم الخط */
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .info-card p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        .visitor-count {
+            font-size: 1.5rem; /* تم تكبير حجم الخط */
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 0;
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px; /* تم زيادة الهوامش الداخلية */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        .visitor-count span {
+            font-size: 2rem; /* تم تكبير حجم الخط */
+            margin-right: 8px;
+        }
+
+        .admin-panel button {
+            width: 100%;
+            padding: 16px; /* تم تكبير حجم الزر */
+            font-size: 1.1rem; /* تم تكبير حجم الخط */
+            background: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .admin-panel button:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .thankyou {
+            font-size: 1rem; /* تم تكبير حجم الخط */
+            color: #757575;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Welcome to the PT Booth</h1>
+    <div class="container">
+        <h1>مرحباً بكم في معرض العلاج الطبيعي</h1>
 
-    <p>أهلاً وسهلاً بكم في بوث الشيخوخة والعلاج الطبيعي. في هذا البوث ستجدون توزيعات ونصائح عملية للحفاظ على الحركة والصحة اليومية لكبار السن. هدفنا تمكين الزوار من التعرف على تمارين بسيطة، أساليب الوقاية من الإصابات، وإرشادات للحياة اليومية تساعد كبار السن على الحفاظ على نشاطهم واستقلاليتهم.</p>
+        <div class="info-card">
+            <h2>الشيخوخة والعلاج الطبيعي</h2>
+            <p>هدفنا نشر الوعي وتقديم نصائح للحفاظ على الحركة واللياقة البدنية لكبار السن.</p>
+            <p><strong>في معرضنا نقدم:</strong></p>
+            <p>✅ نصائح يومية للحركة والوقاية من الإصابات.</p>
+            <p>✅ تمارين بسيطة وفعالة يمكن ممارستها في المنزل.</p>
+            <p>✅ استشارات شخصية من فريقنا المختص في العلاج الطبيعي.</p>
+        </div>
 
-    <div class="info-card">
-        <h2>معلومات عن البوث</h2>
-        <p>الشيخوخة مرحلة طبيعية في الحياة، وغالباً ما تصاحبها تغيّرات جسدية تؤثر على الحركة والقدرة البدنية.</p>
-        <p>في البوث نقدم:</p>
-        <p>- توزيعات تحتوي على نصائح يومية للحركة الآمنة والوقاية من الإصابات.</p>
-        <p>- إرشادات وتمارين بسيطة يمكن تطبيقها في المنزل للحفاظ على القوة والمرونة.</p>
-        <p>- فرصة للتحدث مع فريق مختص للحصول على نصائح شخصية حول العلاج الطبيعي.</p>
-        <p>- معلومات حول التعامل مع الألم المزمن، ضعف التوازن، والمشاكل الحركية بشكل آمن.</p>
-        <p>يمكن للزوار تجربة التمارين العملية، الاطلاع على التوزيعات، وطرح أي استفسار على فريق البوث لضمان الاستفادة الكاملة من المعلومات والنصائح المقدمة.</p>
+        <div class="visitor-count">
+            عدد الزوار حتى الآن: <span id="visitor-counter">0</span>
+        </div>
+
+        <div class="admin-panel">
+            <button id="reset-button">إعادة ضبط العداد</button>
+        </div>
+
+        <div class="thankyou">
+            <p>نشكركم على زيارتكم لنا ونتمنى لكم دوام الصحة والعافية.</p>
+        </div>
     </div>
 
-    <p class="visitor-count">
-        عدد الزوار حتى الآن: <span id="visitor-counter">0</span>
-    </p>
+    <script>
+        let visits = parseInt(localStorage.getItem('visits')) || 0;
+        const counter = document.getElementById('visitor-counter');
 
-    <div class="admin-panel">
-        <button id="reset-button">إعادة ضبط العداد</button>
-    </div>
-
-    <p style="margin-top:30px; font-size:1.2rem; color:#555; text-align:center;">Thank you for visiting our booth!</p>
-</div>
-
-<script>
-    let visits = parseInt(localStorage.getItem('visits')) || 0;
-    const counter = document.getElementById('visitor-counter');
-
-    // التحقق إذا زار المستخدم الصفحة من قبل
-    if (!localStorage.getItem('visited')) {
-        visits++;
-        localStorage.setItem('visits', visits);
-        localStorage.setItem('visited', 'true'); // تسجيل أنه تم احتساب الزيارة
-    }
-
-    counter.textContent = visits;
-
-    document.getElementById('reset-button').addEventListener('click', () => {
-        const code = prompt("Enter admin code to reset:");
-        if(code === "123") {
-            visits = 0;
-            localStorage.setItem('visits', visits);
+        function updateCounter() {
             counter.textContent = visits;
-            localStorage.removeItem('visited'); // السماح للزائر بإعادة العد
-            alert("Counter has been reset ✅");
-        } else {
-            alert("Incorrect code!");
         }
-    });
-</script>
+
+        if (!sessionStorage.getItem('visited')) {
+            visits++;
+            localStorage.setItem('visits', visits);
+            sessionStorage.setItem('visited', 'true');
+        }
+
+        updateCounter();
+
+        document.getElementById('reset-button').addEventListener('click', () => {
+            const code = prompt("أدخل رمز المدير لإعادة ضبط العداد:");
+            if(code === "123") {
+                visits = 0;
+                localStorage.setItem('visits', visits);
+                updateCounter();
+                alert("تم إعادة ضبط العداد بنجاح ✅");
+            } else {
+                alert("الرمز خاطئ. يرجى المحاولة مرة أخرى!");
+            }
+        });
+    </script>
 </body>
 </html>
